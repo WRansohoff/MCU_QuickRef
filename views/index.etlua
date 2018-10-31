@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  window.onload = function() {
+  };
+</script>
+
+<div id="main_container" class="main_content">
+  <table class="main_table" cellpadding="0" cellspacing="0" border="0">
+    <tr class="top_row">
+    </tr>
+    <tr class="main_content">
+      <td class="tree_menu">
+      </td>
+      <td class="mcu_display">
+      </td>
+    </tr>
+  </table>
+</div>
