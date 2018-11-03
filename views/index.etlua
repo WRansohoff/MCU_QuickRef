@@ -1,16 +1,99 @@
+<script type="text/javascript" src="/static/js/index.js"></script>
+
 <script type="text/javascript">
   window.onload = function() {
+    // Track which button is pressed.
+    var cur_button = "";
+
+    // Setup click listeners for menu buttons.
+    <% for menu_name, menu_type in pairs(mcu_list) do %>
+      <% if type(menu_type) == "string" then %>
+      <% else %>
+        <% for submenu_name, submenu_type in pairs(menu_type) do %>
+          <% if type(submenu_type) == "string" then %>
+            document.getElementById("<%=submenu_name%>_mcu_list_entry").addEventListener("click", function(e) {
+              if (cur_button != "") {
+                document.getElementById(cur_button).style.backgroundColor = "white";
+              }
+              update_mcu_display("<%=submenu_name%>");
+              cur_button = "<%=submenu_name%>_mcu_list_entry";
+              document.getElementById(cur_button).style.backgroundColor = "#CCCCCC";
+            });
+          <% else %>
+            <% for subsub_name, subsub_type in pairs(submenu_type) do %>
+              document.getElementById("<%=subsub_name%>_mcu_list_entry").addEventListener("click", function(e) {
+                if (cur_button != "") {
+                  document.getElementById(cur_button).style.backgroundColor = "white";
+                }
+                update_mcu_display("<%=submenu_name%>");
+                cur_button = "<%=submenu_name%>_mcu_list_entry";
+                document.getElementById(cur_button).style.backgroundColor = "#CCCCCC";
+              });
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   };
 </script>
+
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 
 <div id="main_container" class="main_content">
   <table class="main_table" cellpadding="0" cellspacing="0" border="0">
     <tr class="top_row">
-    </tr>
-    <tr class="main_content">
-      <td class="tree_menu">
+      <td class="top_cell">
+        (Top Row)
       </td>
-      <td class="mcu_display">
+    </tr>
+    <tr class="main_row">
+      <td class="tree_menu">
+        <!-- TODO: Support arbitrary menu depths. -->
+        <% for menu_name, menu_type in pairs(mcu_list) do %>
+          <% if type(menu_type) == "string" then %>
+          <% else %>
+            <div class="panel-group vvc-list-margins">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#<%=menu_name%>_collapse"><%= menu_name %></a>
+                  </h4>
+                </div>
+                <div id="<%=menu_name%>_collapse" class="panel-collapse collapse">
+                  <ul class="list-group">
+                    <% for submenu_name, submenu_type in pairs(menu_type) do %>
+                      <% if type(submenu_type) == "string" then %>
+                        <li id="<%=submenu_name%>_mcu_list_entry" class="list-group vvc-list-margins indent-once"><%=submenu_name%></li>
+                      <% else %>
+                        <li class="panel-group vvc-list-margins indent-once">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#<%=submenu_name%>_collapse"><%= submenu_name %></a>
+                              </h4>
+                            </div>
+                            <div id="<%=submenu_name%>_collapse" class="panel-collapse collapse">
+                              <ul class="list-group">
+                                <% for subsub_name, subsub_type in pairs(submenu_type) do %>
+                                  <li id="<%=subsub_name%>_mcu_list_entry" class="list-group vvc-list-margins indent-twice"><%= subsub_name %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </td>
+      <td id="mcu_display" class="mcu_display">
+        <h1>
+          (Select an MCU.)
+        </h1>
       </td>
     </tr>
   </table>
