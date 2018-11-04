@@ -80,6 +80,22 @@
 .mcu_package_display {
 }
 
+.chip_package_outline {
+}
+
+.chip_package_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chip_package_not_found {
+}
+
+.package_not_found_title {
+  text-align: center;
+}
+
 .mcu_package_title {
   text-align: center;
 }
@@ -184,5 +200,57 @@
 
 .clock_speed_value_cell {
   width: 40%;
+  border: 1px solid black;
+}
+
+.mcu_periphs_display {
+}
+
+.mcu_periphs_title {
+  text-align: center;
+}
+
+.mcu_periphs_table {
+  width: 100%;
+}
+
+.periphs_title_row {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.periphs_value_row {
+  width: 100%;
+  text-align: center;
+}
+
+.periph_name_title_cell {
+  width: 60%;
+  border: 1px solid black;
+}
+
+.periph_name_value_cell {
+  width: 60%;
+  border: 1px solid black;
+}
+
+.periph_type_title_cell {
+  width: 20%;
+  border: 1px solid black;
+}
+
+.periph_type_value_cell {
+  width: 20%;
+  border: 1px solid black;
+}
+
+.periph_count_title_cell {
+  width: 20%;
+  border: 1px solid black;
+}
+
+.periph_count_value_cell {
+  width: 20%;
   border: 1px solid black;
 }

@@ -13,6 +13,15 @@ hz_to_str = function(hz) {
   }
 }
 
+get_chip_img_html = function(chip_package) {
+  if (chip_package == "TSSOP-20") {
+    return "<div id=\"chip_package_outline\"><img class=\"chip_package_img\" src=\"/static/assets/tssop20.svg\" alt=\"Twenty-pin TSSOP package outline and pinout.\"/></div>";
+  }
+  else {
+    return "<div id=\"chip_package_not_found\"><h4 class=\"package_not_found_title\">(Could not render chip package - sorry!)</h4></div>";
+  }
+}
+
 get_mcu_json = function(mcu) {
   var response = $.ajax({
            type: 'GET',
@@ -35,7 +44,9 @@ update_mcu_display = function(mcu) {
     // TODO: Use a template file...
     mcu_html += "<h2 class=\"mcu_core_title\">" + cur_mcu_json['mcu_core'] + ", " + (cur_mcu_json['max_speed']/1000000).toString() + "MHz</h2><hr>";
     // Chip package.
-    mcu_html += "<div class=\"mcu_package_display\"><h3 class=\"mcu_package_title\">" + cur_mcu_json['package'] + "</h3></div><hr>";
+    mcu_html += "<div class=\"mcu_package_display\"><h3 class=\"mcu_package_title\">" + cur_mcu_json['package'] + "</h3>";
+    mcu_html += get_chip_img_html(cur_mcu_json['package']);
+    mcu_html += "</div><hr>";
     // Memories.
     mcu_html += "<div class=\"mcu_memories_display\"><h3 class=\"mcu_memories_title\">Memories:</h3><table class=\"mcu_memories_table\"><tr class=\"memories_title_row\"><td class=\"mem_name_title_cell\">Memory</td><td class=\"mem_type_title_cell\">Type</td><td class=\"mem_space_title_cell\">Space</td></tr>";
     for (var key in cur_mcu_json['memories']) {
@@ -59,6 +70,12 @@ update_mcu_display = function(mcu) {
       else {
         mcu_html += "<td class=\"clock_speed_value_cell\">"+hz_to_str(cur_mcu_json['clocks'][key]["min_speed"])+" - "+hz_to_str(cur_mcu_json['clocks'][key]["max_speed"])+"</td></tr>";
       }
+    }
+    mcu_html += "</table></div><hr>";
+    // Peripherals.
+    mcu_html += "<div class=\"mcu_periphs_display\"><h3 class=\"mcu_periphs_title\">Peripherals:</h3><table class=\"mcu_periphs_table\"><tr class=\"periphs_title_row\"><td class=\"periph_name_title_cell\">Peripheral</td><td class=\"periph_type_title_cell\">Type</td><td class=\"periph_count_title_cell\"># Available</td></tr>";
+    for (var key in cur_mcu_json['peripherals']) {
+      mcu_html += "<tr class=\"periphs_value_row\"><td class=\"periph_name_value_cell\">"+cur_mcu_json['peripherals'][key]['name']+"</td><td class=\"periph_type_value_cell\">"+cur_mcu_json['peripherals'][key]['type']+"</td><td class=\"periph_count_value_cell\">"+cur_mcu_json['peripherals'][key]['count']+"</td></tr>";
     }
     mcu_html += "</table></div><hr>";
   }

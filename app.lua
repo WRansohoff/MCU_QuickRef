@@ -28,7 +28,7 @@ app:get("/", function(self)
 end)
 
 app:get("/mcu_info/:mcu.json", function(self)
-  local mcu_file = io.open("mcu_json/" .. self.params.mcu .. ".json", "r")
+  local mcu_file = io.open("static/mcu_json/" .. self.params.mcu .. ".json", "r")
   local mcu_json = {}
   local mcu_status = 404
   if (mcu_file) then
