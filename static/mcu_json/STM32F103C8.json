@@ -1,8 +1,8 @@
 {
-  "mcu":       "STM32F030F4",
-  "mcu_core":  "ARM Cortex-M0",
-  "max_speed": 48000000,
-  "package":   "TSSOP-20",
+  "mcu":       "STM32F103C8",
+  "mcu_core":  "ARM Cortex-M3",
+  "max_speed": 72000000,
+  "package":   "QFP-48",
   "clocks": [
     {
       "name":  "HSI",
@@ -13,7 +13,7 @@
       "name":  "HSE",
       "type":  "External",
       "min_speed": 4000000,
-      "max_speed": 32000000
+      "max_speed": 16000000
     },
     {
       "name":  "LSI",
@@ -30,14 +30,14 @@
     {
       "name":  "Flash",
       "type":  "NV",
-      "space": "16KB",
-      "bytes": 16384
+      "space": "64KB",
+      "bytes": 65536
     },
     {
-      "name":  "RAM",
+      "name":  "SRAM",
       "type":  "V",
-      "space": "4KB",
-      "bytes": 4096
+      "space": "20KB",
+      "bytes": 20480
     }
   ],
   "peripherals": [

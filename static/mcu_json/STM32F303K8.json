@@ -1,8 +1,8 @@
 {
-  "mcu":       "STM32F030F4",
-  "mcu_core":  "ARM Cortex-M0",
-  "max_speed": 48000000,
-  "package":   "TSSOP-20",
+  "mcu":       "STM32F303K8",
+  "mcu_core":  "ARM Cortex-M4F",
+  "max_speed": 72000000,
+  "package":   "QFP-32",
   "clocks": [
     {
       "name":  "HSI",
@@ -30,11 +30,17 @@
     {
       "name":  "Flash",
       "type":  "NV",
-      "space": "16KB",
-      "bytes": 16384
+      "space": "64KB",
+      "bytes": 65536
     },
     {
-      "name":  "RAM",
+      "name":  "SRAM",
+      "type":  "V",
+      "space": "12KB",
+      "bytes": 12288
+    },
+    {
+      "name":  "CCMRAM",
       "type":  "V",
       "space": "4KB",
       "bytes": 4096
