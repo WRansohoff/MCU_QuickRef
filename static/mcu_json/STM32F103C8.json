@@ -3,6 +3,8 @@
   "mcu_core":  "ARM Cortex-M3",
   "max_speed": 72000000,
   "package":   "QFP-48",
+  "pins": [
+  ],
   "clocks": [
     {
       "name":  "HSI",

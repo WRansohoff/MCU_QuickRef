@@ -3,6 +3,8 @@
   "mcu_core":  "ARM Cortex-M0+",
   "max_speed": 80000000,
   "package":   "QFN-32",
+  "pins": [
+  ],
   "clocks": [
     {
       "name":  "HSI",

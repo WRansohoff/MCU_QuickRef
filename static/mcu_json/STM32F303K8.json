@@ -3,6 +3,8 @@
   "mcu_core":  "ARM Cortex-M4F",
   "max_speed": 72000000,
   "package":   "QFP-32",
+  "pins": [
+  ],
   "clocks": [
     {
       "name":  "HSI",
