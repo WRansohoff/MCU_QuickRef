@@ -4,6 +4,246 @@
   "max_speed": 80000000,
   "package":   "QFN-32",
   "pins": [
+    {
+      "num": 1,
+      "name": "VDD",
+      "type": "Power",
+      "description": "Positive power supply pin (pair #1). Typically connected to a positive voltage supply with a ~100nF decoupling capacitor to pin 32.",
+      "AFs": []
+    },
+    {
+      "num":  2,
+      "name": "PC14",
+      "type": "GPIO",
+      "description": "GPIO pin C14. Also one of two low-speed external oscillator pins.",
+      "AFs":  [{
+        "name": "XTI_32K",
+        "type": "Clock_IO",
+        "description": "32.768KHz 'LSE' crystal oscillator input pin."
+      }]
+    },
+    {
+      "num":  3,
+      "name": "PC15",
+      "type": "GPIO",
+      "description": "GPIO pin C15. Also one of two low-speed external oscillator pins.",
+      "AFs":  [{
+        "name": "XTO_32K",
+        "type": "Clock_IO",
+        "description": "32.768KHz 'LSE' crystal oscillator output pin."
+      }]
+    },
+    {
+      "num":  4,
+      "name": "Reset",
+      "type": "Other",
+      "description": "Reset pin; internal ~47K pull-up, pull to ground for reset.",
+      "AFs":  []
+    },
+    {
+      "num":  5,
+      "name": "VDDA",
+      "type": "Power",
+      "description": "Analog power supply; apply extra noise filtering to this pin for better analog peripheral performance.",
+      "AFs":  []
+    },
+    {
+      "num":  6,
+      "name": "PA0",
+      "type": "GPIO",
+      "description": "GPIO pin A0.",
+      "AFs":  []
+    },
+    {
+      "num":  7,
+      "name": "PA1",
+      "type": "GPIO",
+      "description": "GPIO pin A1.",
+      "AFs":  []
+    },
+    {
+      "num":  8,
+      "name": "PA2",
+      "type": "GPIO",
+      "description": "GPIO pin A2.",
+      "AFs":  []
+    },
+    {
+      "num":  9,
+      "name": "PA3",
+      "type": "GPIO",
+      "description": "GPIO pin A3.",
+      "AFs":  []
+    },
+    {
+      "num":  10,
+      "name": "PA4",
+      "type": "GPIO",
+      "description": "GPIO pin A4.",
+      "AFs":  []
+    },
+    {
+      "num":  11,
+      "name": "PA5",
+      "type": "GPIO",
+      "description": "GPIO pin A5.",
+      "AFs":  []
+    },
+    {
+      "num":  12,
+      "name": "PA6",
+      "type": "GPIO",
+      "description": "GPIO pin A6.",
+      "AFs":  []
+    },
+    {
+      "num":  13,
+      "name": "PA7",
+      "type": "GPIO",
+      "description": "GPIO pin A7.",
+      "AFs":  []
+    },
+    {
+      "num":  14,
+      "name": "PB0",
+      "type": "GPIO",
+      "description": "GPIO pin B0.",
+      "AFs":  []
+    },
+    {
+      "num":  15,
+      "name": "PB1",
+      "type": "GPIO",
+      "description": "GPIO pin B1.",
+      "AFs":  []
+    },
+    {
+      "num":  16,
+      "name": "VSS",
+      "type": "Power",
+      "description": "Negative power supply pin (pair #2). Typically connected to Ground with a ~100nF decoupling capacitor to pin 17.",
+      "AFs":  []
+    },
+    {
+      "num":  17,
+      "name": "VDD",
+      "type": "Power",
+      "description": "Positive power supply pin (pair #2). Typically connected to a positive voltage supply with a ~100nF decoupling capacitor to pin 16.",
+      "AFs":  []
+    },
+    {
+      "num":  18,
+      "name": "PA8",
+      "type": "GPIO",
+      "description": "GPIO pin A8.",
+      "AFs":  []
+    },
+    {
+      "num":  19,
+      "name": "PA9",
+      "type": "GPIO",
+      "description": "GPIO pin A9.",
+      "AFs":  []
+    },
+    {
+      "num":  20,
+      "name": "PA10",
+      "type": "GPIO",
+      "description": "GPIO pin A10.",
+      "AFs":  []
+    },
+    {
+      "num":  21,
+      "name": "PA11",
+      "type": "GPIO",
+      "description": "GPIO pin A11.",
+      "AFs":  []
+    },
+    {
+      "num":  22,
+      "name": "PA12",
+      "type": "GPIO",
+      "description": "GPIO pin A12.",
+      "AFs":  []
+    },
+    {
+      "num":  23,
+      "name": "SWDIO",
+      "type": "Debug",
+      "description": "ISP pin: 'SWDIO'. Also GPIO pin A13.",
+      "AFs":  [{
+        "name": "PA13",
+        "type": "GPIO",
+        "description": "GPIO pin A13."
+      }]
+    },
+    {
+      "num":  24,
+      "name": "SWCLK",
+      "type": "Debug",
+      "description": "ISP pin: 'SWCLK'. Also GPIO pin A14.",
+      "AFs":  [{
+        "name": "PA14",
+        "type": "GPIO",
+        "description": "GPIO pin A14."
+      }]
+    },
+    {
+      "num":  25,
+      "name": "PA15",
+      "type": "GPIO",
+      "description": "GPIO pin A15.",
+      "AFs":  []
+    },
+    {
+      "num":  26,
+      "name": "PB3",
+      "type": "GPIO",
+      "description": "GPIO pin B3.",
+      "AFs":  []
+    },
+    {
+      "num":  27,
+      "name": "PB4",
+      "type": "GPIO",
+      "description": "GPIO pin B4.",
+      "AFs":  []
+    },
+    {
+      "num":  28,
+      "name": "PB5",
+      "type": "GPIO",
+      "description": "GPIO pin B5.",
+      "AFs":  []
+    },
+    {
+      "num":  29,
+      "name": "PB6",
+      "type": "GPIO",
+      "description": "GPIO pin B6.",
+      "AFs":  []
+    },
+    {
+      "num":  30,
+      "name": "PB7",
+      "type": "GPIO",
+      "description": "GPIO pin B7.",
+      "AFs":  []
+    },
+    {
+      "num":  31,
+      "name": "BOOT0",
+      "type": "Other",
+      "description": "Boot mode selection pin. Pull to ground to boot from Flash memory. Pull to VDD for different behavior depending on the 'BOOT1' configuration bit; see reference manual.",
+      "AFs":  []
+    },
+    {
+      "num":  32,
+      "name": "VSS",
+      "type": "Power",
+      "description": "Negative power supply pin (pair #1). Typically connected to Ground with a ~100nF decoupling capacitor to pin 1.",
+      "AFs":  []
+    }
   ],
   "clocks": [
     {

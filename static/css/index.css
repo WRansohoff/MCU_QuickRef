@@ -87,6 +87,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 256px;
+  height: 256px;
 }
 
 .chip_package_not_found {
@@ -105,6 +107,103 @@
 
 .chip_package_pin_table {
   width: 100%;
+  height: 100%;
+}
+
+#chip_pkg_t_tbl {
+  height: 20px;
+}
+
+#chip_pkg_b_tbl {
+  height: 70px;
+}
+
+.chip_package_pin_table_tb {
+  text-align: center;
+  table-layout: fixed;
+  width: 192px;
+}
+
+.chip_package_pin_t_row {
+  width: 256px;
+  transform: translateY(25%);
+}
+
+.chip_package_pin_b_row {
+  width: 256px;
+  transform: translateY(-25%);
+}
+
+.pkg_span_mtqfn32 {
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 256px;
+  transform: translate(36px, 24px);
+  font-size: 15.5px;
+}
+
+.pkg_span_mbqfn32 {
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 256px;
+  transform: translate(36px, -32px);
+  font-size: 15.5px;
+}
+
+.pkg_span_mtqfp32 {
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 256px;
+  transform: translate(36px, 24px);
+  font-size: 15.5px;
+}
+
+.pkg_span_mbqfp32 {
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 256px;
+  transform: translate(36px, -32px);
+  font-size: 15.5px;
+}
+
+.chip_package_pin_mt {
+  transform: rotate(295deg);
+  width: 100%;
+  white-space: nowrap;
+}
+
+.chip_package_pin_mt:before {
+  content: '';
+  padding: 50% 0%;
+  display: inline-block;
+}
+
+.chip_package_pin_mts {
+  border: 1px black solid;
+}
+
+.chip_package_pin_mb {
+  transform: rotate(65deg);
+  width: 100%;
+  white-space: nowrap;
+}
+
+.chip_package_pin_mb:before {
+  content: '';
+  padding: 50% 0%;
+  display: inline-block;
+}
+
+.chip_package_pin_mbs {
+  border: 1px black solid;
 }
 
 .chip_package_pin_m_row {
@@ -144,6 +243,14 @@
 .chip_package_pin_lm {
   text-align: right;
   width: 100%;
+}
+
+.chip_package_pin_lms {
+  border: 1px black solid;
+}
+
+.chip_package_pin_rms {
+  border: 1px black solid;
 }
 
 .pkg_span_rmts20 {
