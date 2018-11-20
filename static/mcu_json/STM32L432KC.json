@@ -19,7 +19,8 @@
       "AFs":  [{
         "name": "XTI_32K",
         "type": "Clock_IO",
-        "description": "32.768KHz 'LSE' crystal oscillator input pin."
+        "description": "32.768KHz 'LSE' crystal oscillator input pin.",
+        "display": true
       }]
     },
     {
@@ -30,7 +31,8 @@
       "AFs":  [{
         "name": "XTO_32K",
         "type": "Clock_IO",
-        "description": "32.768KHz 'LSE' crystal oscillator output pin."
+        "description": "32.768KHz 'LSE' crystal oscillator output pin.",
+        "display": true
       }]
     },
     {
@@ -52,21 +54,63 @@
       "name": "PA0",
       "type": "GPIO",
       "description": "GPIO pin A0.",
-      "AFs":  []
+      "AFs":  [{
+        "name": "Clock_in",
+        "type": "Clock_IO",
+        "description": "External clock signal input."
+      },
+      {
+        "name": "USART2_CTS",
+        "type": "USART",
+        "description": "USART2 peripheral CTS signal."
+      },
+      {
+        "name": "ADC1_5",
+        "type": "ADC",
+        "description": "ADC 1, channel 5 analog output."
+      }]
     },
     {
       "num":  7,
       "name": "PA1",
       "type": "GPIO",
       "description": "GPIO pin A1.",
-      "AFs":  []
+      "AFs":  [{
+        "name": "SPI1_SCK",
+        "type": "SPI",
+        "description": "SPI1 clock line."
+      },
+      {
+        "name": "USART2_RTS",
+        "type": "USART",
+        "description": "USART2 peripheral RTS signal."
+      },
+      {
+        "name": "ADC1_6",
+        "type": "ADC",
+        "description": "ADC1, channel 6 analog output."
+      }]
     },
     {
       "num":  8,
       "name": "PA2",
       "type": "GPIO",
       "description": "GPIO pin A2.",
-      "AFs":  []
+      "AFs":  [{
+        "name": "LPUART1_TX",
+        "type": "USART",
+        "description": "Low-Power UART1 peripheral TX line."
+      },
+      {
+        "name": "USART2_TX",
+        "type": "USART",
+        "description": "USART2 peripheral TX line."
+      },
+      {
+        "name": "ADC1_7",
+        "type": "ADC",
+        "description": "ADC1, channel 7 analog output."
+      }]
     },
     {
       "num":  9,
@@ -174,7 +218,8 @@
       "AFs":  [{
         "name": "PA13",
         "type": "GPIO",
-        "description": "GPIO pin A13."
+        "description": "GPIO pin A13.",
+        "display": true
       }]
     },
     {
@@ -185,7 +230,8 @@
       "AFs":  [{
         "name": "PA14",
         "type": "GPIO",
-        "description": "GPIO pin A14."
+        "description": "GPIO pin A14.",
+        "display": true
       }]
     },
     {

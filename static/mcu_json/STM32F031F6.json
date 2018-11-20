@@ -19,7 +19,8 @@
       "AFs":  [{
         "name": "XTI",
         "type": "Clock_IO",
-        "description": "HSE crystal oscillator input pin."
+        "description": "HSE crystal oscillator input pin.",
+        "display": true
       }]
     },
     {
@@ -30,7 +31,8 @@
       "AFs":  [{
         "name": "XTO",
         "type": "Clock_IO",
-        "description": "HSE crystal oscillator output pin."
+        "description": "HSE crystal oscillator output pin.",
+        "display": true
       }]
     },
     {
@@ -146,7 +148,8 @@
       "AFs":  [{
         "name": "PA13",
         "type": "GPIO",
-        "description": "GPIO pin A13."
+        "description": "GPIO pin A13.",
+        "display": true
       }]
     },
     {
@@ -157,7 +160,8 @@
       "AFs":  [{
         "name": "PA14",
         "type": "GPIO",
-        "description": "GPIO pin A14."
+        "description": "GPIO pin A14.",
+        "display": true
       }]
     }
   ],

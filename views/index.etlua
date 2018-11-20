@@ -1,6 +1,11 @@
 <script type="text/javascript" src="/static/js/index.js"></script>
 
 <script type="text/javascript">
+  // JQuery initializers.
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({ boundary: 'window', container: 'body' });
+  });
+
   window.onload = function() {
     // Track which button is pressed.
     var cur_button = "";

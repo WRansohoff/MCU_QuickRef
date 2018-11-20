@@ -13,40 +13,44 @@ hz_to_str = function(hz) {
   }
 }
 
+get_chip_pin_htmls = function(chip_pins, pin_num) {
+  // Collect information about the pin.
+  var pin_hover_html = "<i><b>Pin #" + (pin_num+1).toString() + ": ";
+  var pin_disp_html = "<b>" + (pin_num+1).toString() + ": </b>";
+  var pin_info = chip_pins[pin_num];
+  if (pin_info) {
+    pin_disp_html += pin_info["name"];
+    pin_hover_html += pin_info["name"] + "</b><br/>" + pin_info["description"];
+    for (var j = 0; j < pin_info["AFs"].length; ++j) {
+      if (pin_info["AFs"][j]["display"]) {
+        pin_disp_html += " / " + pin_info["AFs"][j]["name"];
+      }
+      pin_hover_html += "<br/><br/><i><b>" + pin_info["AFs"][j]["name"] + " (" + pin_info["AFs"][j]["type"] + "):</b></i><br/>" + pin_info["AFs"][j]["description"];
+    }
+  }
+  else {
+    pin_disp_html += "(No information)";
+    pin_hover_html += "(No information)</b></i>";
+  }
+  return { hover: pin_hover_html, disp: pin_disp_html };
+}
+
 get_chip_img_html = function(chip_package, chip_pins) {
   if (chip_package == "TSSOP-20") {
     var chip_img_html = "<div id=\"chip_package_outline\">";
     chip_img_html += "<span id=\"chip_package_left_mid\" class=\"pkg_span_lmts20\"><table class=\"chip_package_pin_table\">";
     for (var i = 0; i < 10; ++i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
     chip_img_html += "<span id=\"chip_package_right_mid\" class=\"pkg_span_rmts20\"><table class=\"chip_package_pin_table\">";
     for (var i = 19; i > 9; --i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
@@ -58,70 +62,34 @@ get_chip_img_html = function(chip_package, chip_pins) {
     var chip_img_html = "<div id=\"chip_package_outline\">";
     chip_img_html += "<span id=\"chip_package_mid_top\" class=\"pkg_span_mtqfn32\"><table id=\"chip_pkg_t_tbl\" class=\"chip_package_pin_table_tb\"><tr class=\"chip_package_pin_t_row\">";
     for (var i = 31; i > 23; --i) {
-      chip_img_html += "<td class=\"chip_package_pin_mt\"><span class=\"chip_package_pin_mts\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<td class=\"chip_package_pin_mt\"><span class=\"chip_package_pin_mts\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td>";
     }
     chip_img_html += "</tr></table></span>";
     chip_img_html += "<span id=\"chip_package_left_mid\" class=\"pkg_span_lmqfn32\"><table class=\"chip_package_pin_table\">";
     for (var i = 0; i < 8; ++i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
     chip_img_html += "<span id=\"chip_package_right_mid\" class=\"pkg_span_rmqfn32\"><table class=\"chip_package_pin_table\">";
     for (var i = 23; i > 15; --i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
     chip_img_html += "<img id=\"chip_package_img_tag\" class=\"chip_package_img\" src=\"/static/assets/qfn32.svg\" alt=\"Thirty-two-pin QFN package outline and pinout.\"/>";
     chip_img_html += "<span id=\"chip_package_mid_bot\" class=\"pkg_span_mbqfn32\"><table id=\"chip_pkg_b_tbl\" class=\"chip_package_pin_table_tb\"><tr class=\"chip_package_pin_b_row\">";
     for (var i = 8; i < 16; ++i) {
-      chip_img_html += "<td class=\"chip_package_pin_mb\"><span class=\"chip_package_pin_mbs\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<td class=\"chip_package_pin_mb\"><span class=\"chip_package_pin_mbs\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td>";
     }
     chip_img_html += "</tr></table></span>";
@@ -132,70 +100,34 @@ get_chip_img_html = function(chip_package, chip_pins) {
     var chip_img_html = "<div id=\"chip_package_outline\">";
     chip_img_html += "<span id=\"chip_package_mid_top\" class=\"pkg_span_mtqfp32\"><table id=\"chip_pkg_t_tbl\" class=\"chip_package_pin_table_tb\"><tr class=\"chip_package_pin_t_row\">";
     for (var i = 31; i > 23; --i) {
-      chip_img_html += "<td class=\"chip_package_pin_mt\"><span class=\"chip_package_pin_mts\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<td class=\"chip_package_pin_mt\"><span class=\"chip_package_pin_mts\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td>";
     }
     chip_img_html += "</tr></table></span>";
     chip_img_html += "<span id=\"chip_package_left_mid\" class=\"pkg_span_lmqfp32\"><table class=\"chip_package_pin_table\">";
     for (var i = 0; i < 8; ++i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_lm\"><span class=\"chip_package_pin_lms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
     chip_img_html += "<span id=\"chip_package_right_mid\" class=\"pkg_span_rmqfp32\"><table class=\"chip_package_pin_table\">";
     for (var i = 23; i > 15; --i) {
-      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<tr class=\"chip_package_pin_m_row\"><td class=\"chip_package_pin_rm\"><span class=\"chip_package_pin_rms\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td></tr>";
     }
     chip_img_html += "</table></span>";
     chip_img_html += "<img id=\"chip_package_img_tag\" class=\"chip_package_img\" src=\"/static/assets/qfp32.svg\" alt=\"Thirty-two-pin QFP package outline and pinout.\"/>";
     chip_img_html += "<span id=\"chip_package_mid_bot\" class=\"pkg_span_mbqfp32\"><table id=\"chip_pkg_b_tbl\" class=\"chip_package_pin_table_tb\"><tr class=\"chip_package_pin_b_row\">";
     for (var i = 8; i < 16; ++i) {
-      chip_img_html += "<td class=\"chip_package_pin_mb\"><span class=\"chip_package_pin_mbs\">";
-      chip_img_html += "<b>" + (i+1).toString() + ": </b>";
-      var pin_info = chip_pins[i];
-      if (pin_info) {
-        chip_img_html += pin_info["name"];
-        for (var j = 0; j < pin_info["AFs"].length; ++j) {
-          chip_img_html += " / " + pin_info["AFs"][j]["name"];
-        }
-      }
-      else {
-        chip_img_html += "(No information)";
-      }
+      var pin_htmls = get_chip_pin_htmls(chip_pins, i);
+      chip_img_html += "<td class=\"chip_package_pin_mb\"><span class=\"chip_package_pin_mbs\" data-toggle=\"tooltip\" data-html=\"true\" data-title=\"" + pin_htmls['hover'] + "\">";
+      chip_img_html += pin_htmls['disp'];
       chip_img_html += "</span></td>";
     }
     chip_img_html += "</tr></table></span>";
@@ -290,6 +222,13 @@ update_mcu_display = function(mcu) {
   }
 
   var hscale = 1.2;
-  document.getElementById("chip_pkg_t_tbl").style.height = (max_th*hscale).toString() + "px";
-  document.getElementById("chip_pkg_b_tbl").style.height = (max_bh*hscale).toString() + "px";
+  if (document.getElementById("chip_pkg_t_tbl")) {
+    document.getElementById("chip_pkg_t_tbl").style.height = (max_th*hscale).toString() + "px";
+  }
+  if (document.getElementById("chip_pkg_b_tbl")) {
+    document.getElementById("chip_pkg_b_tbl").style.height = (max_bh*hscale).toString() + "px";
+  }
+
+  // Make sure that all Bootstrap tooltips are enabled.
+  $('[data-toggle="tooltip"]').tooltip({ boundary: 'window', container: 'body' });
 };
